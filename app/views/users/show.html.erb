@@ -1,0 +1,17 @@
+<p>(users_show画面)</p>
+
+<h2>User info</h2>
+<div>
+  <p>name<p>
+  <span><%= @user.name%></span>
+</div>
+<div>
+  <p>introduction</p>
+  <span><%= @user.introduction %></span>
+</div>
+
+
+<%=link_to 'edit(謎の工具マーク)', edit_user_path(@user.id)%>
+
+<h2>Books</h2>
+<p>*この投稿者の本のみ一覧表示したい。5章参照<p>

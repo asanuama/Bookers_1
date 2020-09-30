@@ -1,0 +1,32 @@
+<p>(books_show画面)</p>
+
+
+
+<h2>New book</h2>
+<%= form_with model:@newbook, local:true do |f| %>
+<p>title</p>
+<%= f.text_field :title%>
+<p>option</p>
+<%= f.text_field :body%>
+<div><%= f.submit 'Create Book' %></div>
+<% end %>
+
+
+<h2>Book detail</h2>
+<div>
+  <strong>Title:</strong>
+  <span><%= @book.title %></span>
+</div>
+<div>
+  <strong>Body:</strong>
+  <span><%= @book.body %></span>
+</div>
+
+<% if @book.user == current_user %>
+  <div>
+    <%=link_to 'Edit' ,edit_book_path(@book.id)%>
+  </div>
+  <div>
+    <%= link_to 'Destroy',book_path(@book.id), method: :delete, data: { confirm: "本当に消しますか？" }%>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to'Home', root_path%></li>
+          <li>Users(あとでパス指定)</li>
+          <li><%=link_to'Books',books_path%></li>
+          <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to'Home', root_path%></li>
+          <li><%= link_to'About',  home_about_path%></li>
+          <li><%= link_to "sign up", new_user_registration_path %></li>
+          <li><%= link_to "login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </header>
+
+    <!--サクセスメッセージ-->
+      <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

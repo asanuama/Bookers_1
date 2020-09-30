@@ -1,0 +1,33 @@
+<p>(books_index画面)</p>
+
+<h2>User info</h2>
+<p>*あとでかく</p>
+
+<h2>New book</h2>
+<%= form_with model:@newbook, local:true do |f| %>
+<p>title</p>
+<%= f.text_field :title%>
+<p>option</p>
+<%= f.text_field :body%>
+<div><%= f.submit 'Create Book' %></div>
+<% end %>
+
+<h2>Books</h2>
+<p>*投稿者イメージあとで追加</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Option</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @books.each do |book| %>
+        <tr>
+            <td><%=link_to book.title, book_path(book.id) %></td>
+            <td><%= book.body %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

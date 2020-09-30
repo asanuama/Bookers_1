@@ -1,0 +1,10 @@
+<p>(users_edit画面)</p>
+
+<%=form_with model:@user, local:true do |f|%>
+<p>name</p>
+<%= f.text_area :name%>
+<p>introduction</p>
+<%= f.text_area :introduction%>
+<div><%=f.submit'Update User'%></div>
+<% end %>
+
