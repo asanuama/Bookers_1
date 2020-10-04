@@ -1,0 +1,68 @@
+<div class="col-lg-3">
+  <% if @newbook.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @newbook.errors.full_messages.each do |message| %>
+          <li><%= "! error ! #{message}"%></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>User info</h2>
+  <div>
+    <p>name<p>
+    <span><%= current_user.name%></span>
+  </div>
+  <div>
+    <p>image</p>
+    <!--refile-->
+    <% if current_user.profile_image.nil?%>
+      <%= image_tag 'no_image.png' ,size: '100x100'%>
+    <% else %>
+      <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+    <% end %>
+  </div>
+  <div>
+    <p>introduction</p>
+    <span><%= current_user.introduction %></span>
+  </div>
+  <%=link_to 'edit(謎の工具マーク)', edit_user_path(current_user.id)%>
+
+  <h2>New book</h2>
+  <%= form_with model:@newbook, local:true do |f| %>
+  <p>title</p>
+  <%= f.text_field :title%>
+  <p>option</p>
+  <%= f.text_field :body%>
+  <div><%= f.submit 'Create Book' %></div>
+  <% end %>
+</div>
+
+<div class="col-lg-7">
+  <h2>Users</h2>
+  <table class = "table">
+      <thead>
+          <tr>
+              <th>image</th>
+              <th>name</th>
+              <th>&nbsp;</th>
+          </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+          <tr>
+              <td>
+              <% if user.profile_image.nil?%>
+                  <%= image_tag 'no_image.png' ,size: '100x100'%>
+              <% else %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+              <% end %>
+              </td>
+              <td><%=user.name %></td>
+              <td><%=link_to 'show',user_path(user.id)  %></td>
+          </tr>
+      <% end %>
+      </tbody>
+  </table>
+</div>

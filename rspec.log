@@ -1,0 +1,274 @@
+
+Bookモデルのテスト
+  バリデーションのテスト
+    titleカラム
+[32m      空欄でないこと[0m
+    bodyカラム
+[32m      空欄でないこと[0m
+[32m      200文字以下であること[0m
+  アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
+Userモデルのテスト
+  バリデーションのテスト
+    nameカラム
+[32m      空欄でないこと[0m
+[32m      2文字以上であること[0m
+[32m      20文字以下であること[0m
+    introductionカラム
+[32m      50文字以下であること[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      1:Nとなっている[0m
+
+投稿のテスト
+  サイドバーのテスト
+    表示の確認
+[32m      New bookと表示される[0m
+[32m      titleフォームが表示される[0m
+[32m      opinionフォームが表示される[0m
+[32m      Create Bookボタンが表示される[0m
+[32m      投稿に成功する[0m
+[32m      投稿に失敗する[0m
+  編集のテスト
+    自分の投稿の編集画面への遷移
+[32m      遷移できる[0m
+    他人の投稿の編集画面への遷移
+[31m      遷移できない (FAILED - 1)[0m
+    表示の確認
+[32m      Editing Bookと表示される[0m
+[32m      title編集フォームが表示される[0m
+[32m      opinion編集フォームが表示される[0m
+[32m      Showリンクが表示される[0m
+[32m      Backリンクが表示される[0m
+    フォームの確認
+[32m      編集に成功する[0m
+[31m      編集に失敗する (FAILED - 2)[0m
+  一覧画面のテスト
+    表示の確認
+[32m      Booksと表示される[0m
+[32m      自分と他人の画像のリンク先が正しい[0m
+[32m      自分と他人のタイトルのリンク先が正しい[0m
+[32m      自分と他人のオピニオンが表示される[0m
+  詳細画面のテスト
+    自分・他人共通の投稿詳細画面の表示を確認
+[32m      Book detailと表示される[0m
+[31m      ユーザー画像・名前のリンク先が正しい (FAILED - 3)[0m
+[32m      投稿のtitleが表示される[0m
+[32m      投稿のopinionが表示される[0m
+    自分の投稿詳細画面の表示を確認
+[32m      投稿の編集リンクが表示される[0m
+[32m      投稿の削除リンクが表示される[0m
+    他人の投稿詳細画面の表示を確認
+[32m      投稿の編集リンクが表示されない[0m
+[32m      投稿の削除リンクが表示されない[0m
+
+bootstrapのテスト
+  グリッドシステムのテスト
+    ユーザー関連画面
+[31m      一覧画面 (FAILED - 4)[0m
+[31m      詳細画面 (FAILED - 5)[0m
+    投稿関連画面
+[31m      一覧画面 (FAILED - 6)[0m
+[31m      詳細画面 (FAILED - 7)[0m
+
+ヘッダーのテスト
+  ログインしていない場合
+    ヘッダーの表示を確認
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される[0m
+[32m      Aboutリンクが表示される[0m
+[32m      Sign upリンクが表示される[0m
+[32m      loginリンクが表示される[0m
+    ヘッダーのリンクを確認
+[32m      Home画面に遷移する[0m
+[32m      About画面に遷移する[0m
+[32m      新規登録画面に遷移する[0m
+[32m      ログイン画面に遷移する[0m
+  ログインしている場合
+    ヘッダーの表示を確認
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される[0m
+[32m      Usersリンクが表示される[0m
+[32m      Booksリンクが表示される[0m
+[32m      logoutリンクが表示される[0m
+    ヘッダーのリンクを確認
+[32m      Home画面に遷移する[0m
+[32m      Users画面に遷移する[0m
+[32m      Books画面に遷移する[0m
+[32m      logoutする[0m
+
+ユーザー権限のテスト
+  ログインしていない場合
+    投稿関連のURLにアクセス
+[32m      一覧画面に遷移できない[0m
+[32m      編集画面に遷移できない[0m
+[32m      詳細画面に遷移できない[0m
+  ログインしていない場合にユーザー関連のURLにアクセス
+    ユーザー関連のURLにアクセス
+[32m      一覧画面に遷移できない[0m
+[32m      編集画面に遷移できない[0m
+[32m      詳細画面に遷移でない[0m
+
+トップページのテスト
+  ボディ部分のテスト
+    表示の確認
+[32m      Log inリンクが表示される[0m
+[32m      Sign Upリンクが表示される[0m
+    ログインしている場合の挙動を確認
+[32m      Log inリンクをクリックしたらユーザー詳細画面へ遷移する[0m
+[32m      Sign Upリンクをクリックしたらユーザー詳細画面に遷移する[0m
+    ログインしていない場合の挙動を確認
+[32m      Log inリンクをクリックしたらログイン画面へ遷移する[0m
+[32m      Sign Upリンクをクリックしたら新規登録画面に遷移する[0m
+
+ユーザー認証のテスト
+  ユーザー新規登録
+    新規登録画面に遷移
+[32m      新規登録に成功する[0m
+[32m      新規登録に失敗する[0m
+  ユーザーログイン
+    ログイン画面に遷移
+[32m      ログインに成功する[0m
+[32m      ログインに失敗する[0m
+
+ユーザーのテスト
+  サイドバーのテスト
+    表示の確認
+[32m      User infoと表示される[0m
+[31m      画像が表示される (FAILED - 8)[0m
+[32m      名前が表示される[0m
+[32m      自己紹介が表示される[0m
+[32m      編集リンクが表示される[0m
+  編集のテスト
+    自分の編集画面への遷移
+[32m      遷移できる[0m
+    他人の編集画面への遷移
+[31m      遷移できない (FAILED - 9)[0m
+    表示の確認
+[32m      User infoと表示される[0m
+[32m      名前編集フォームに自分の名前が表示される[0m
+[32m      画像編集フォームが表示される[0m
+[32m      自己紹介編集フォームに自分の自己紹介が表示される[0m
+[32m      編集に成功する[0m
+[32m      編集に失敗する[0m
+  一覧画面のテスト
+    表示の確認
+[32m      Usersと表示される[0m
+[32m      自分と他の人の画像が表示される[0m
+[32m      自分と他の人の名前が表示される[0m
+[31m      showリンクが表示される (FAILED - 10)[0m
+  詳細画面のテスト
+    表示の確認
+[32m      Booksと表示される[0m
+[32m      投稿一覧のユーザーの画像のリンク先が正しい[0m
+[32m      投稿一覧のtitleのリンク先が正しい[0m
+[32m      投稿一覧にopinionが表示される[0m
+
+Failures:
+
+  1) 投稿のテスト 編集のテスト 他人の投稿の編集画面への遷移 遷移できない
+     [31mFailure/Error: expect(current_path).to eq('/books')[0m
+     [31m[0m
+     [31m  expected: "/books"[0m
+     [31m       got: "/books/2/edit"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/books_spec.rb:52:in `block (4 levels) in <main>'[0m
+
+  2) 投稿のテスト 編集のテスト フォームの確認 編集に失敗する
+     [31mFailure/Error: expect(page).to have_content 'error'[0m
+     [31m  expected to find text "error" in "Bookers\nHome Users Books logout\nBook was successfully updated.\nUser info\nname ss66pk44o0\nintroduction 877f8ojdnuioixndd1fq\nedit(工具マーク)\nNew book\ntitle\noption\nBook detail\ni5p7y jb0ydhdcr4wdf664en6n Edit Destroy"[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/books_spec.rb:86:in `block (4 levels) in <main>'[0m
+
+  3) 投稿のテスト 詳細画面のテスト 自分・他人共通の投稿詳細画面の表示を確認 ユーザー画像・名前のリンク先が正しい
+     [31mFailure/Error: expect(page).to have_link book.user.name, href: user_path(book.user)[0m
+     [31m  expected to find link "njkxc2kjou" with href "/users/2" but there were no matches[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/books_spec.rb:123:in `block (4 levels) in <main>'[0m
+
+  4) bootstrapのテスト グリッドシステムのテスト ユーザー関連画面 一覧画面
+     [31mFailure/Error: expect(page).to have_selector('.container .row .col-xs-3')[0m
+     [31m  expected to find css ".container .row .col-xs-3" but there were no matches[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/bootstrap_spec.rb:16:in `block (4 levels) in <main>'[0m
+
+  5) bootstrapのテスト グリッドシステムのテスト ユーザー関連画面 詳細画面
+     [31mFailure/Error: expect(page).to have_selector('.container .row .col-xs-3')[0m
+     [31m  expected to find css ".container .row .col-xs-3" but there were no matches[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/bootstrap_spec.rb:21:in `block (4 levels) in <main>'[0m
+
+  6) bootstrapのテスト グリッドシステムのテスト 投稿関連画面 一覧画面
+     [31mFailure/Error: expect(page).to have_selector('.container .row .col-xs-3')[0m
+     [31m  expected to find css ".container .row .col-xs-3" but there were no matches[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/bootstrap_spec.rb:28:in `block (4 levels) in <main>'[0m
+
+  7) bootstrapのテスト グリッドシステムのテスト 投稿関連画面 詳細画面
+     [31mFailure/Error: expect(page).to have_selector('.container .row .col-xs-3')[0m
+     [31m  expected to find css ".container .row .col-xs-3" but there were no matches[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/bootstrap_spec.rb:33:in `block (4 levels) in <main>'[0m
+
+  8) ユーザーのテスト サイドバーのテスト 表示の確認 画像が表示される
+     [31mFailure/Error: expect(page).to have_css('img.profile_image')[0m
+     [31m  expected to find css "img.profile_image" but there were no matches[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/users_spec.rb:71:in `block (4 levels) in <main>'[0m
+
+  9) ユーザーのテスト 編集のテスト 他人の編集画面への遷移 遷移できない
+     [31mFailure/Error: expect(current_path).to eq('/users/' + user.id.to_s)[0m
+     [31m[0m
+     [31m  expected: "/users/2"[0m
+     [31m       got: "/users/1/edit"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [31m[0m
+     [31m[0m
+     [31m[0m
+     [36m# ./spec/system/users_spec.rb:96:in `block (4 levels) in <main>'[0m
+
+  10) ユーザーのテスト 一覧画面のテスト 表示の確認 showリンクが表示される
+      [31mFailure/Error: expect(page).to have_link 'Show', href: user_path(user)[0m
+      [31m  expected to find link "Show" with href "/users/2" but there were no matches[0m
+      [31m[0m
+      [31m[0m
+      [31m[0m
+      [36m# ./spec/system/users_spec.rb:147:in `block (4 levels) in <main>'[0m
+
+Finished in 8.49 seconds (files took 3.33 seconds to load)
+[31m95 examples, 10 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/system/books_spec.rb:50[0m [36m# 投稿のテスト 編集のテスト 他人の投稿の編集画面への遷移 遷移できない[0m
+[31mrspec ./spec/system/books_spec.rb:82[0m [36m# 投稿のテスト 編集のテスト フォームの確認 編集に失敗する[0m
+[31mrspec ./spec/system/books_spec.rb:121[0m [36m# 投稿のテスト 詳細画面のテスト 自分・他人共通の投稿詳細画面の表示を確認 ユーザー画像・名前のリンク先が正しい[0m
+[31mrspec ./spec/system/bootstrap_spec.rb:14[0m [36m# bootstrapのテスト グリッドシステムのテスト ユーザー関連画面 一覧画面[0m
+[31mrspec ./spec/system/bootstrap_spec.rb:19[0m [36m# bootstrapのテスト グリッドシステムのテスト ユーザー関連画面 詳細画面[0m
+[31mrspec ./spec/system/bootstrap_spec.rb:26[0m [36m# bootstrapのテスト グリッドシステムのテスト 投稿関連画面 一覧画面[0m
+[31mrspec ./spec/system/bootstrap_spec.rb:31[0m [36m# bootstrapのテスト グリッドシステムのテスト 投稿関連画面 詳細画面[0m
+[31mrspec ./spec/system/users_spec.rb:70[0m [36m# ユーザーのテスト サイドバーのテスト 表示の確認 画像が表示される[0m
+[31mrspec ./spec/system/users_spec.rb:94[0m [36m# ユーザーのテスト 編集のテスト 他人の編集画面への遷移 遷移できない[0m
+[31mrspec ./spec/system/users_spec.rb:146[0m [36m# ユーザーのテスト 一覧画面のテスト 表示の確認 showリンクが表示される[0m
+

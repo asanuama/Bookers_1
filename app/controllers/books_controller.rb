@@ -1,18 +1,23 @@
 class BooksController < ApplicationController
+ # ログイン済ユーザーのみにアクセスを許可(ログインしてないと、ログイン画面へリダイレクト)
+  before_action :authenticate_user!
+
   def index
     @newbook = Book.new
     @books = Book.all
   end
 
-   def create
-    @book = Book.new(book_params)
-    if @book.save
-      redirect_to book_path(@book.id), notice: 'Book was successfully created.'
+  def create
+    @newbook = Book.new(book_params)
+    @newbook.user_id = current_user.id
+    if @newbook.save
+      redirect_to book_path(@newbook.id) ,notice: 'Book was successfully create
+      d.'
     else
       @books = Book.all
       render 'index'
     end
-   end
+  end
 
   def show
     @newbook = Book.new
@@ -26,8 +31,7 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params)
-    redirect_to book_path(book.id) ,notice: 'Book was successfully update
-    d.'
+    redirect_to book_path(book.id) ,notice: 'Book was successfully updated.'
   end
 
   def destroy
