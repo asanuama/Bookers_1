@@ -1,4 +1,12 @@
-<p>(books_edit画面)</p>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= "! error ! #{message}"%></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <h1>Editing Book</h1>
 <%= form_with model:@book, local:true do |f|%>

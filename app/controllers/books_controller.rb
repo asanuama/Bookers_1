@@ -2,6 +2,9 @@ class BooksController < ApplicationController
  # ログイン済ユーザーのみにアクセスを許可(ログインしてないと、ログイン画面へリダイレクト)
   before_action :authenticate_user!
 
+  # private参照
+  before_action :correct_user, only: [:edit, :update]
+
   def index
     @newbook = Book.new
     @books = Book.all
@@ -29,9 +32,13 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id) ,notice: 'Book was successfully updated.'
+    @book = Book.find(params[:id])
+  if
+    @book.update(book_params)
+    redirect_to book_path(@book.id) ,notice: 'Book was successfully updated.'
+  else
+    render 'edit'
+  end
   end
 
   def destroy
@@ -44,4 +51,13 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body, :user_id)
   end
+
+  # ログインユーザ意外url入力で画面遷移できなくする（edit,updateを封じる）メソッド
+  def correct_user
+     book = Book.find(params[:id])
+  if current_user.id != book.user.id
+       redirect_to books_path
+  end
+  end
+
 end
