@@ -1,13 +1,4 @@
   <!--部分テンプレート-->
-  <% if @newbook.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @newbook.errors.full_messages.each do |message| %>
-          <li><%= "! error ! #{message}"%></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <h2>User info</h2>
   <div>
@@ -25,13 +16,16 @@
     <span>introduction </span>
     <span><%= current_user.introduction %></span>
   </div>
-  <%=link_to 'edit', edit_user_path(current_user.id)%>
+  <%=link_to edit_user_path(current_user.id) do%>
+    <i class="fas fa-wrench"></i>
+  <% end %>
+
 
   <h2>New book</h2>
-  <%= form_with model:@newbook, local:true do |f| %>
+  <%= form_with model:newbook, local:true do |f| %>
   <p>title</p>
   <%= f.text_field :title%>
   <p>option</p>
   <%= f.text_field :body%>
-  <div><%= f.submit 'Create Book' %></div>
+  <div><%= f.submit 'Create Book' ,class:"btn btn-lg btn-block btn-base-1 mt-20"%></div>
   <% end %>

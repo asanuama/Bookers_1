@@ -1,58 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-        <% if @book.user.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% @book.user.errors.full_messages.each do |message| %>
-              <li><%= "! error ! #{message}"%></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <% if @newbook.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% @newbook.errors.full_messages.each do |message| %>
-              <li><%= "! error ! #{message}"%></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <h2>User info</h2>
-      <div>
-        <% if @book.user.profile_image.nil?%>
-          <%= image_tag 'no_image.png' ,size: '100x100'%>
-        <% else %>
-          <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
-        <% end %>
-      </div>
-      <div>
-        <span>name </span>
-        <span><%= @book.user.name%></span>
-      </div>
-      <div>
-        <span>introduction</span>
-        <span><%= @book.user.introduction %></span>
-      </div>
-      <% if @book.user.id == current_user.id%>
-        <%=link_to 'edit', edit_user_path(@book.user.id)%>
-      <% else %>
-        <%=link_to 'edit', user_path(current_user.id)%>
-      <% end %>
-
-      <h2>New book</h2>
-      <%= form_with model:@newbook, local:true do |f| %>
-        <p>title</p>
-        <%= f.text_field :title%>
-        <p>option</p>
-        <%= f.text_field :body%>
-        <div><%= f.submit 'Create Book' %></div>
-      <% end %>
+      <%= render 'books/show',user: @user, newbook: @newbook%>
     </div>
-
     <div class="col-xs-9">
     <h2>Book detail</h2>
       <table class = "table">

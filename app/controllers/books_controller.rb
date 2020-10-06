@@ -25,6 +25,7 @@ class BooksController < ApplicationController
   def show
     @newbook = Book.new
     @book = Book.find(params[:id])
+    @user = @book.user
   end
 
   def edit
@@ -33,12 +34,12 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-  if
-    @book.update(book_params)
-    redirect_to book_path(@book.id) ,notice: 'Book was successfully updated.'
-  else
-    render 'edit'
-  end
+    if
+      @book.update(book_params)
+      redirect_to book_path(@book.id) ,notice: 'Book was successfully updated.'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -52,12 +53,12 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body, :user_id)
   end
 
-  # ログインユーザ意外url入力で画面遷移できなくする（edit,updateを封じる）メソッド
+  # ログインユーザ意外url入力でedit,updateへ画面遷移できなくするメソッド
   def correct_user
-     book = Book.find(params[:id])
-  if current_user.id != book.user.id
-       redirect_to books_path
-  end
+    book = Book.find(params[:id])
+    if current_user.id != book.user.id
+         redirect_to books_path
+    end
   end
 
 end
