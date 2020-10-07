@@ -1,10 +1,8 @@
+       <!--index,show 部分テンプレート(サイドバー)-->
+
       <h2>User info</h2>
       <div>
-        <% if user.profile_image.nil?%>
-          <%= image_tag 'no_image.png' ,size: '100x100'%>
-        <% else %>
-          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
-        <% end %>
+        <%= attachment_image_tag user, :profile_image, :fill, 100, 100 ,fallback: "no_image.png",size:'100x100' %>
       </div>
       <div>
         <span>name </span>
@@ -14,15 +12,7 @@
         <span>introduction</span>
         <span><%= user.introduction %></span>
       </div>
-      <% if user.id == current_user.id%>
-        <%=link_to edit_user_path(user.id) do%>
-          <i class="fas fa-wrench"></i>
-        <% end %>
-      <% else %>
-        <%=link_to user_path(current_user.id) do%>
-          <i class="fas fa-wrench"></i>
-        <% end %>
-      <% end %>
+        <%=link_to "", edit_user_path(user.id) , class:"fas fa-wrench"%>
 
       <h2>New book</h2>
       <%= form_with model:newbook, local:true do |f| %>
